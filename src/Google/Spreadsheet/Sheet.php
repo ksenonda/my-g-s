@@ -216,6 +216,29 @@ class Google_Spreadsheet_Sheet {
     return null;
   }
 
+  public function delete ($condition) {
+    $this->fetch(true);
+    $rows = array_keys($this->select($condition));
+    $data = array();
+    foreach ($this->header as $c => $value) {
+      $col = $this->getColumnLetter($c + 1);
+      foreach ($rows as $r) {
+        $r += 1;
+        $data[] = new Google_Service_Sheets_ValueRange(array(
+          'range' => $this->name . "!${col}${r}",
+          'values' => array(
+            array('')
+          )
+        ));
+      }
+    }
+      $params = $this->params;
+      $params['data'] = $data;
+      $body = new Google_Service_Sheets_BatchUpdateValuesRequest($params);
+      return $this->sheet->spreadsheets_values->batchUpdate($this->id, $body);
+    return null;
+  }
+
   /**
    * Get column letter (A1 notation) from number
    * 
