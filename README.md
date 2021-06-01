@@ -112,16 +112,6 @@ $sheet->delete(
   )
 );
 
-// Update rows selected by closure
-$sheet->update(
-  array(
-    'email' => 'tom@example.com'
-  ),
-  function($row){
-    return $row['name'] === 'Tom';
-  }
-);
-
 // Get up-to-date items
 $items = $sheet->fetch(true)->items;
 ```
