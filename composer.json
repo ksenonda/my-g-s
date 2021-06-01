@@ -1,5 +1,5 @@
 {
-  "name": "mach3/google-spreadsheet",
+  "name": "ksenonda/my-g-s",
   "description": "Google spreadsheet client",
   "require": {
     "google/apiclient": "2.*"
@@ -10,8 +10,8 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "mach3",
-      "email": "mach3ss@gmail.com"
+      "name": "ksenonda",
+      "email": "kseniya@ingeni.app"
     }
   ]
 }
