@@ -34,7 +34,7 @@ var_dump($sheet->items);
 
 ## Usage
 
-### Initialize sheet (>= 1.1.0)
+### Initialize sheet
 
 The target sheet must be empty
 
@@ -102,7 +102,31 @@ $sheet->update(
 $items = $sheet->fetch(true)->items;
 ```
 
-### Update cells (>=1.1.0)
+### Delete rows
+
+```php
+// Update rows selected by array
+$sheet->delete(
+  array(
+    'name' => 'Tom'
+  )
+);
+
+// Update rows selected by closure
+$sheet->update(
+  array(
+    'email' => 'tom@example.com'
+  ),
+  function($row){
+    return $row['name'] === 'Tom';
+  }
+);
+
+// Get up-to-date items
+$items = $sheet->fetch(true)->items;
+```
+
+### Update cells
 
 `edit` method let you to update cells' value manually
 
