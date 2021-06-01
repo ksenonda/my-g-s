@@ -105,11 +105,17 @@ $items = $sheet->fetch(true)->items;
 ### Delete rows
 
 ```php
-// Update rows selected by array
+// delete rows selected by array
 $sheet->delete(
   array(
     'name' => 'Tom'
   )
+);
+//delete rows selected by closure
+$sheet->delete(
+  function($row){
+    return $row['name'] === 'Tom';
+  }
 );
 
 // Get up-to-date items
